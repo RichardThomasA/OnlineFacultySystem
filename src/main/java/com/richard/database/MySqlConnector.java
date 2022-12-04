@@ -27,7 +27,7 @@ public class MySqlConnector {
 		}
 		else {
 			
-			try(InputStream ins =new FileInputStream("src/main/resources/config.properties")){
+			try(InputStream ins =new FileInputStream("D:\\EclipseWorkspace/JavaEEApplications/OnlineFacultySystem/src/main/resources/config.properties")){
 				
 				Properties prop = new Properties();
 				prop.load(ins);
