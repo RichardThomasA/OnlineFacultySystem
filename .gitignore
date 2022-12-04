@@ -81,3 +81,6 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
+
+# properties files should be ignored
+*.properties
