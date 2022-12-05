@@ -44,10 +44,11 @@ public class LoginServlet extends HttpServlet{
 				System.out.println(user.getUserName());
 				//redirect to admin dashboard
 				//dispatcher = request.getRequestDispatcher("/pages/home.html");
-				dispatcher = request.getRequestDispatcher("/AdminHome");
+				//dispatcher = request.getRequestDispatcher("/AdminHome");
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
-				dispatcher.forward(request, response);
+				//dispatcher.forward(request, response);
+				response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/home.html");
 						
 			}
 			else {

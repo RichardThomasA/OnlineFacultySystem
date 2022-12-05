@@ -43,5 +43,6 @@ public class AdminHomeServlet extends HttpServlet{
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		
+		System.out.println("get method reached");
 	}
 }
