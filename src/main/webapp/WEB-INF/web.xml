@@ -20,4 +20,12 @@
   	<servlet-name>AdminHome</servlet-name>
   	<url-pattern>/AdminHome</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>Signup</servlet-name>
+  	<servlet-class>com.richard.javaservlet.SignupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Signup</servlet-name>
+  	<url-pattern>/Signup</url-pattern>
+  </servlet-mapping>
 </web-app>

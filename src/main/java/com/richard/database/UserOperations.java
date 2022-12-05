@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.richard.dao.User;
 
@@ -90,6 +92,30 @@ public class UserOperations {
 			}
 		}
 		return usersList;
+	}
+	
+	public Map<Integer,String> getAllCourses(){
+		
+		Map<Integer,String> coursesMap = new HashMap<>();
+		conn = MySqlConnector.getConnection();
+		if(conn!=null) {
+			try {
+				
+				String sqlQuery ="select * from course";
+				stmt = conn.prepareStatement(sqlQuery);
+				res = stmt.executeQuery();
+				while(res.next()) {
+					Integer courseId = res.getInt(1);
+					String courseName =res.getString(2);
+					coursesMap.put(courseId, courseName);
+				}
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return coursesMap;
 	}
 	
 }

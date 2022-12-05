@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="../css/signup.css" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+        <section>
+            <div class ="container">
+                <div class="col-lg-3 mx-auto card form-container">
+                    <form method="post" action="signup">
+                        <div class="d-flex justify-content-center form-header">
+                          <h1>Sign Up</h1>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="text" id="login-username" name="signup-username" class="form-control" placeholder="Enter your username">
+                          <label for="login-username" class="form-label">Username</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="password" id="login-password" name="signup-password" class="form-control" placeholder="Enter your password">
+                          <label for="login-password" class="form-label">Password</label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Select Course</label>
+                            <select class="form-select" name="signup-course-select" aria-label="course-select" id="course-select">
+                                <option value="one">one</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Select User Type</label>
+                            <select class="form-select" name="signup-usertype-select" aria-label="usertype-select" id="usertype-select">
+                                <option value="Student" selected>Student</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Faculty">Faculty</option>                                
+                            </select>
+                        </div>
+                        <div class="d-grid gap-2 mx-auto">
+                          <button type="submit" id="signup-submit" class="btn btn-outline-primary btn-lg">Sign Up</button>
+                        </div> 
+                    </form>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
