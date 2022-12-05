@@ -6,9 +6,9 @@ window.onload = (loadEvent) =>{
             var jsonObject = JSON.stringify(jsonData);
             //console.log(jsonObject);
             var courseObject =JSON.parse(jsonObject);
-            console.log(courseObject);
+            //console.log(courseObject);
             const map = new Map(Object.entries(courseObject));
-            console.log(map);
+            //console.log(map);
             
             var options = '';
             var selectedKey = '';
@@ -20,14 +20,8 @@ window.onload = (loadEvent) =>{
                 if(value=='All Courses'){
                     selectedKey = key;
                 } 
-                console.log(key);
-                console.log(value);
-                console.log(document.getElementById("course-select").options.length);
                 document.getElementById("course-select").options.add(new Option(value,key));
-                //options+='<option value='+key+'>'+value+'</option>';
             }
-            console.log(options);
-            //document.getElementById("course-select").innerHTML = options;
             document.getElementById("course-select").value=selectedKey;
         });
 }
