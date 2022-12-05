@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet{
 				//dispatcher = request.getRequestDispatcher("/pages/home.html");
 				//dispatcher = request.getRequestDispatcher("/AdminHome");
 				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
+				session.setAttribute(user.getUserName(), user);
 				//dispatcher.forward(request, response);
 				response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/home.html");
 						
