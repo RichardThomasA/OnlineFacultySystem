@@ -118,4 +118,27 @@ public class UserOperations {
 		return coursesMap;
 	}
 	
+	public void addUser(User user, int courseId) {
+		
+		conn = MySqlConnector.getConnection();
+		if(conn!=null) {
+			try {
+				String sqlQuery ="insert into user (username,password,course_id,usertype)"
+						+ "values(?,?,?,?)";
+				stmt = conn.prepareStatement(sqlQuery);
+				stmt.setString(1, user.getUserName());
+				stmt.setString(2, user.getPassword());
+				stmt.setInt(3, courseId);
+				stmt.setString(4, user.getUserType());
+				
+				int rowsAffected = stmt.executeUpdate();
+				if(rowsAffected>0) {
+					System.out.println("user entered successfully");
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 }

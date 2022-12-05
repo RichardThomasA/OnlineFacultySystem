@@ -6,8 +6,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.richard.dao.User;
 import com.richard.database.UserOperations;
 
 public class SignupServlet extends HttpServlet{
@@ -23,10 +25,24 @@ public class SignupServlet extends HttpServlet{
 		try {
 			String username = request.getParameter("signup-username");
 			String password = request.getParameter("signup-password");
-			String course = request.getParameter("signup-course-select");
+			int course_id = Integer.parseInt(request.getParameter("signup-course-select"));
 			String userType = request.getParameter("signup-usertype-select");
 			
 			userOperations = new UserOperations();
+			
+			User user =new User();
+			user.setUserName(username);
+			user.setPassword(password);
+			user.setUserType(userType);
+			
+			//System.out.println(username+","+password+","+course_id+","+userType);
+			
+			userOperations.addUser(user, course_id);
+			
+			HttpSession session = request.getSession();
+			session.setAttribute(user.getUserName(), user);
+			
+			response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/home.html");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
