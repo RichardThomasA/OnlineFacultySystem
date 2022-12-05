@@ -15,6 +15,10 @@ import com.richard.database.UserOperations;
 
 public class LoginServlet extends HttpServlet{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UserOperations userOperations;
 	private RequestDispatcher dispatcher;
 
@@ -39,7 +43,8 @@ public class LoginServlet extends HttpServlet{
 			if(user.getUserType().equals("Admin")) {
 				System.out.println(user.getUserName());
 				//redirect to admin dashboard
-				dispatcher = request.getRequestDispatcher("/pages/home.html");
+				//dispatcher = request.getRequestDispatcher("/pages/home.html");
+				dispatcher = request.getRequestDispatcher("/AdminHome");
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
 				dispatcher.forward(request, response);
