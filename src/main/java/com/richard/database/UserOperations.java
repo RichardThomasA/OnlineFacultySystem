@@ -21,8 +21,20 @@ public class UserOperations {
 		conn = MySqlConnector.getConnection();
 		if(conn!=null) {
 			try {
-				stmt = conn.prepareStatement("select * from user where username = ?"
-						+ " and password =?");
+				String sqlQuery = "select "
+						+ "	user.id,"
+						+ " user.username,"
+						+ " user.password,"
+						+ " course.course_name, "
+						+ " user.usertype "
+						+ "from user "
+						+ "inner join course "
+						+ "on user.course_id = course.course_id "
+						+ "where user.username = ? "
+						+ "and user.password = ?";
+//				String sqlQueryOld = "select * from user where username = ?"
+//						+ " and password =?";
+				stmt = conn.prepareStatement(sqlQuery);
 				stmt.setString(1, username);
 				stmt.setString(2, password);
 				
