@@ -1,7 +1,7 @@
 const rootUrl ="http://localhost:8080/OnlineFacultySystem";
 
 function fetchAllUsers(){
-    var jsonObject = fetch ("OnlineFacultySystem/AdminHome?" + new URLSearchParams({
+    var jsonObject = fetch ("../AdminHome?" + new URLSearchParams({
         method : 'getAllUsers'
     })).then(response => response.json());
 
