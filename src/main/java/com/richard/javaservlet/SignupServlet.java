@@ -35,6 +35,7 @@ public class SignupServlet extends HttpServlet{
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
+			System.out.println("reached signup get");
 			String method = request.getParameter("method");
 			if(method!=null) {
 				if(method.equals("getAllCourses")) {
