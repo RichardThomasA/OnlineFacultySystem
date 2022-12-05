@@ -20,19 +20,28 @@ public class AdminHomeServlet extends HttpServlet{
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		
+		User user = null;
+		RequestDispatcher dispatcher = null;
 		System.out.println("reached admin home");
 		HttpSession session = request.getSession(false);
-		if(session!=null) {
-			System.out.println("active session");
-			User user = (User)session.getAttribute("user");
-		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/home.html");
 		try {
+			if(session!=null) {
+				System.out.println("active session");
+				user = (User)session.getAttribute("user");
+				dispatcher = request.getRequestDispatcher("/pages/home.html?user="+user.getUserName());
+			} else {
+				dispatcher = request.getRequestDispatcher("/pages/home.html");
+			}
+			
 			dispatcher.forward(request, response);
 		} catch (ServletException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			
+	}
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		
 	}
 }
