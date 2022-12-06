@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.richard.dao.Feedback;
 import com.richard.dao.User;
+import com.richard.database.FeedbackOperations;
 import com.richard.database.UserOperations;
 
 public class FeedbackServlet extends HttpServlet{
@@ -20,24 +22,27 @@ public class FeedbackServlet extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private FeedbackOperations fbOperations = null;
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		
 		try {
 			
-			String facultyIdString = request.getParameter("feedback-faculty-select");
-			System.out.println(facultyIdString);
-			
-			//int facultyId = Integer.parseInt(request.getParameter("feedback-faculty-select"));
+			int facultyId = Integer.parseInt(request.getParameter("feedback-faculty-select"));
 			String date = request.getParameter("feedback-date");
 			String question = request.getParameter("feedback-question");
 			
-			System.out.println(date);
-			System.out.println(question);
-			LocalDate localdate = LocalDate.parse(date);
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYY-MM-dd");
-			date = formatter.format(localdate);
-			System.out.println(date);
+			fbOperations = new FeedbackOperations();
+			
+			Feedback feedback = new Feedback();
+			feedback.setFacultyId(facultyId);
+			feedback.setDate(date);
+			feedback.setQuestion(question);
+			
+			//System.out.println(request.getContentType());
+			fbOperations.addFeedback(feedback);
+			
+			response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/home.html");
 			
 		} catch(Exception e) {
 			e.printStackTrace();

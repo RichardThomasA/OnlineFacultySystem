@@ -30,7 +30,10 @@ public class FeedbackOperations {
 				stmt.setString(2, feedback.getDate());
 				stmt.setString(3, feedback.getQuestion());
 				
-				stmt.executeUpdate();
+				int rowsAffected = stmt.executeUpdate();
+				if(rowsAffected>0) {
+					System.out.println("feedback entered successfully");
+				}
 				
 			} catch(Exception e) {
 				e.printStackTrace();
