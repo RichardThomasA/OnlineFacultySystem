@@ -40,16 +40,24 @@ public class LoginServlet extends HttpServlet{
 		if(user!= null) {
 			System.out.println("login successfull for user "+username);
 			
+			HttpSession session = request.getSession();
+			session.setAttribute(user.getUserName(), user);
+			
 			if(user.getUserType().equals("Admin")) {
 				System.out.println(user.getUserName());
 				//redirect to admin dashboard
 				//dispatcher = request.getRequestDispatcher("/pages/home.html");
 				//dispatcher = request.getRequestDispatcher("/AdminHome");
-				HttpSession session = request.getSession();
-				session.setAttribute(user.getUserName(), user);
+				
 				//dispatcher.forward(request, response);
 				response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/home.html");
 						
+			}
+			else if(user.getUserType().equals("Faculty")){
+				response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/facultyHome.html");
+			}
+			else if(user.getUserType().equals("Student")){
+				response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/studentHome.html");
 			}
 			else {
 				System.out.println("user doesnt exist");

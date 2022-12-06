@@ -3,6 +3,7 @@ package com.richard.javaservlet;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,7 +43,17 @@ public class SignupServlet extends HttpServlet{
 			HttpSession session = request.getSession();
 			session.setAttribute(user.getUserName(), user);
 			
-			response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/home.html");
+			if(userType.equals("Admin")) {
+				response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/home.html");
+			}else if(userType.equals("Faculty")) {
+				response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/facultyHome.html");
+			}else if(userType.equals("Student")) {
+				response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/studentHome.html");
+			}else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("signup.html");
+				dispatcher.include(request, response);
+			}
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
