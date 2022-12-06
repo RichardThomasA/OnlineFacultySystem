@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Feedback</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="../css/createFeedback.css" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+        <section>
+            <div class ="container">
+                <div class="col-lg-4 mx-auto card form-container">
+                    <form method="post" action="../Signup">
+                        <div class="d-flex justify-content-center form-header">
+                          <h1>Add Feedback</h1>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Select Faculty</label>
+                            <select class="form-select" name="feedback-faculty-select" aria-label="feedback-faculty-select" id="feedback-faculty-select">
+                                
+                            </select>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="date" id="feedback-date" name="feedback-date" class="form-control" placeholder="Enter the date">
+                          <label for="feedback-date" class="form-label">Date</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <textarea id="feedback-question" name="feedback-question" class="form-control" placeholder="Enter your Question"></textarea>
+                          <label for="feedback-question" class="form-label">Feedback Question</label>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mx-auto">
+                          <button type="submit" id="feedback-submit" class="btn btn-outline-primary btn-lg">Add Feedback</button>
+                        </div> 
+                    </form>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--
+    <script src="../js/createFeedback.js"></script>
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
