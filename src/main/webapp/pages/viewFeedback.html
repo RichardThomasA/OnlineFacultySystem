@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  </head>
+  <body>
+    <main>
+        <section>
+            <div class="container px-4 py-5" id="feedback-container">
+                <div class="col-lg-6 mx-auto" id="feedback-selector-container">
+                    <div class="row g-3 mb-2">
+                        <div class="col-auto">
+                            <label class="form-label mt-2">Select Feedback Viewing Mode</label>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select" id="feedback-view-selector">
+                                <option value="ViewAll" selected>View All</option>
+                                <option value="DateWise">Date Wise</option>
+                                <option value="FacultyWise">Faculty Wise</option>
+                                <option value="StudentWise">Student Wise</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success" onclick="updateSelector()">Select</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="container" id="feedback-table-container">
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src = "../js/viewFeedback.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>

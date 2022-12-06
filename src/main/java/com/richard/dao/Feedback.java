@@ -10,7 +10,7 @@ public class Feedback {
 	private String date;
 	private String question;
 	private String studentName;
-	private String studentId;
+	private int studentId;
 	private String answer;
 	private int answerId;
 	
@@ -53,10 +53,10 @@ public class Feedback {
 	public void setStudentName(String studentName) {
 		this.studentName = studentName;
 	}
-	public String getStudentId() {
+	public int getStudentId() {
 		return studentId;
 	}
-	public void setStudentId(String studentId) {
+	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
 	public String getAnswer() {
