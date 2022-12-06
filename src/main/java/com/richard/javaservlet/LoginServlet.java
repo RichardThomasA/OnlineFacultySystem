@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,7 +42,12 @@ public class LoginServlet extends HttpServlet{
 			System.out.println("login successfull for user "+username);
 			
 			HttpSession session = request.getSession();
-			session.setAttribute(user.getUserName(), user);
+			session.setAttribute("username", user.getUserName());
+			session.setAttribute("usertype", user.getUserType());
+			
+			Cookie loginCookie = new Cookie("username",username);
+			loginCookie.setMaxAge(30*60);//cookie set for 30 minutes
+			response.addCookie(loginCookie);
 			
 			if(user.getUserType().equals("Admin")) {
 				System.out.println(user.getUserName());
@@ -65,6 +71,11 @@ public class LoginServlet extends HttpServlet{
 				dispatcher.include(request, response);
 			}
 			
+		}
+		else {
+			System.out.println("user doesnt exist");
+			dispatcher = request.getRequestDispatcher("index.html");
+			dispatcher.include(request, response);
 		}
 	}
 }
