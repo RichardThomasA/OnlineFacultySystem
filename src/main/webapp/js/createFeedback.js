@@ -5,9 +5,9 @@ window.onload = (loadEvent) =>{
     })).then(response => response.json()).then(jsonData => {
             var jsonObject = JSON.stringify(jsonData);
             //console.log(jsonObject);
-            var courseObject =JSON.parse(jsonObject);
-            //console.log(courseObject);
-            const map = new Map(Object.entries(courseObject));
+            var facultyObject =JSON.parse(jsonObject);
+            //console.log(facultyObject);
+            const map = new Map(Object.entries(facultyObject));
             //console.log(map);
             
             const keyIterator = map.keys();
