@@ -118,6 +118,28 @@ public class UserOperations {
 		return coursesMap;
 	}
 	
+	public Map<Integer,String> getAllFaculty(){
+		
+		Map<Integer,String> facultyMap = new HashMap<>();
+		conn = MySqlConnector.getConnection();
+		if(conn!=null) {
+			try {
+				String sqlQuery ="select * from user where usertype ='Faculty'";
+				stmt = conn.prepareStatement(sqlQuery);
+				res = stmt.executeQuery();
+				while(res.next()) {
+					Integer facultyId = res.getInt(1);
+					String facultyName =res.getString(2);
+					facultyMap.put(facultyId, facultyName);
+				}
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return facultyMap;
+	}
+	
 	public void addUser(User user, int courseId) {
 		
 		conn = MySqlConnector.getConnection();
