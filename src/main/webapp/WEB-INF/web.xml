@@ -28,4 +28,12 @@
   	<servlet-name>Signup</servlet-name>
   	<url-pattern>/Signup</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>Feedback</servlet-name>
+  	<servlet-class>com.richard.javaservlet.FeedbackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Feedback</servlet-name>
+  	<url-pattern>/Feedback</url-pattern>
+  </servlet-mapping>
 </web-app>
