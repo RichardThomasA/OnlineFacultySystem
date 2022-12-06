@@ -39,8 +39,9 @@ function loadAllFeedback(){
     .then(jsonData => {
         //
         var jsonObject = JSON.stringify(jsonData);
-        var FeedbackDataArray =JSON.parse(jsonObject);
+        FeedbackDataArray =JSON.parse(jsonObject);
         console.log("all data loaded");
+        console.log(FeedbackDataArray);
     });
 }
 
@@ -51,7 +52,10 @@ function updateSelector(){
         populateViewAllTable();
     }
     else if(feedbackView =="DateWise"){
-        createSelectorDiv('DateWise')
+        createSelectorDiv('DateWise');
+    }
+    else if(feedbackView =='FacultyWise'){
+        createSelectorDiv('FacultyWise');
     }
     else{
         console.log("invalid input");
@@ -72,6 +76,44 @@ function createSelectorDiv(view){
             FeedbackDataArray.forEach((element)=>{
                 if(element.hasOwnProperty("date")){
                     content +='<option value="'+element.date+'">'+element.date+'</option>';
+                }
+            });
+            
+            content+= '    </select>'
+            +'</div>'
+            +'<div class="col-auto">'
+            +'    <button class="btn btn-success" onclick="updateSelector()">Select</button>'
+            +'</div>'
+        +'</div>';
+        }else if(view=='FacultyWise'){
+            var content = '<div class="row g-3 mb-2">'
+            +'<div class="col-auto">'
+            +'    <label class="form-label mt-2">Select Faculty</label>'
+            +'</div>'
+            +'<div class="col-auto">'
+            +'    <select class="form-select" id="date-view-selector">';
+            FeedbackDataArray.forEach((element)=>{
+                if(element.hasOwnProperty("facultyName")){
+                    content +='<option value="'+element.facultyName+'">'+element.facultyName+'</option>';
+                }
+            });
+            
+            content+= '    </select>'
+            +'</div>'
+            +'<div class="col-auto">'
+            +'    <button class="btn btn-success" onclick="updateSelector()">Select</button>'
+            +'</div>'
+        +'</div>';
+        }else if(view=='StudentWise'){
+            var content = '<div class="row g-3 mb-2">'
+            +'<div class="col-auto">'
+            +'    <label class="form-label mt-2">Select Student</label>'
+            +'</div>'
+            +'<div class="col-auto">'
+            +'    <select class="form-select" id="date-view-selector">';
+            FeedbackDataArray.forEach((element)=>{
+                if(element.hasOwnProperty("studentName")){
+                    content +='<option value="'+element.studentName+'">'+element.studentName+'</option>';
                 }
             });
             
