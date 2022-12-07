@@ -76,9 +76,14 @@ function createSelectorDiv(view){
             +'</div>'
             +'<div class="col-auto">'
             +'    <select class="form-select" id="date-view-selector">';
+            var datesArray =[];
             FeedbackDataArray.forEach((element)=>{
                 if(element.hasOwnProperty("date")){
-                    content +='<option value="'+element.date+'">'+element.date+'</option>';
+                    if(datesArray.includes(element.date)==false){
+                        content +='<option value="'+element.date+'">'+element.date+'</option>';
+                        datesArray.push(element.date);
+                    }
+                    
                 }
             });
             
@@ -123,7 +128,7 @@ function createSelectorDiv(view){
             content+= '    </select>'
             +'</div>'
             +'<div class="col-auto">'
-            +'    <button class="btn btn-success" onclick="updateSelector()">Select</button>'
+            +'    <button class="btn btn-success" onclick="populateDateWiseTable()">Select</button>'
             +'</div>'
         +'</div>';
         }
