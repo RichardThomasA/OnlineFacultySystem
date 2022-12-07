@@ -42,10 +42,10 @@ public class LoginServlet extends HttpServlet{
 			System.out.println("login successfull for user "+username);
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("username", user.getUserName());
-			session.setAttribute("usertype", user.getUserType());
+			session.setAttribute("usernameSession", user.getUserName());
+			session.setAttribute("usertypeSession", user.getUserType());
 			
-			Cookie loginCookie = new Cookie("username",username);
+			Cookie loginCookie = new Cookie("usernameCookie",username);
 			loginCookie.setMaxAge(30*60);//cookie set for 30 minutes
 			response.addCookie(loginCookie);
 			

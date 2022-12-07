@@ -41,7 +41,8 @@ public class SignupServlet extends HttpServlet{
 			userOperations.addUser(user, course_id);
 			
 			HttpSession session = request.getSession();
-			session.setAttribute(user.getUserName(), user);
+			session.setAttribute("usernameSession", user.getUserName());
+			session.setAttribute("usertypeSession", user.getUserType());
 			
 			if(userType.equals("Admin")) {
 				response.sendRedirect("http://localhost:8080/OnlineFacultySystem/pages/home.html");
