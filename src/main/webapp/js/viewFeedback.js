@@ -11,6 +11,8 @@ window.onload = (loadEvent) =>{
         feedbackViewSelector.removeChild(getOptionByValue(feedbackViewSelector,'FacultyWise'));
     }
 
+    var userCookie =getCookie("usernameCookie");
+    console.log("the username cookie is "+userCookie);
     //we load all feedback data
     loadAllFeedback();
 };
@@ -99,17 +101,21 @@ function createSelectorDiv(view){
             +'    <label class="form-label mt-2">Select Faculty</label>'
             +'</div>'
             +'<div class="col-auto">'
-            +'    <select class="form-select" id="date-view-selector">';
+            +'    <select class="form-select" id="faculty-view-selector">';
+            var facultyArray =[];
             FeedbackDataArray.forEach((element)=>{
                 if(element.hasOwnProperty("facultyName")){
-                    content +='<option value="'+element.facultyName+'">'+element.facultyName+'</option>';
+                    if(facultyArray.includes(element.facultyName)==false){
+                        content +='<option value="'+element.facultyName+'">'+element.facultyName+'</option>';
+                        facultyArray.push(element.facultyName);
+                    }
                 }
             });
             
             content+= '    </select>'
             +'</div>'
             +'<div class="col-auto">'
-            +'    <button class="btn btn-success" onclick="populateDateWiseTable()">Select</button>'
+            +'    <button class="btn btn-success" onclick="populateFacultyWiseTable()">Select</button>'
             +'</div>'
         +'</div>';
         }else if(view=='StudentWise'){
@@ -159,6 +165,50 @@ function getCookie(cname) {
       }
     }
     return "";
+}
+
+function populateFacultyWiseTable(){
+    var facultySelected = document.getElementById("faculty-view-selector").value;
+    if(facultySelected!=null || facultySelected!=''){
+        //if faculty is valid
+        var table = '';
+        table = '<table class="table">'+
+        '<thead>'+
+        '<tr>'+
+            '<th scope="col">Question ID</th>'+
+            '<th scope="col">Faculty</th>'+
+            '<th scope="col">Student</th>'+
+            '<th scope="col">Question</th>'+
+            '<th scope="col">Answer</th>'+
+        '</tr>'+
+        '</thead>'+
+        '<tbody>';
+        FeedbackDataArray.forEach((element)=>{
+            if(element.facultyName==facultySelected){
+                table +='<tr>';
+                table +='<td>'+element.fbId+'</td>';
+                table +='<td>'+element.facultyName+'</td>';
+                if(element.hasOwnProperty("studentName")){
+                    table +='<td>'+element.studentName+'</td>';
+                }else{
+                    table +='<td>'+"-"+'</td>';
+                }
+                table +='<td>'+element.question+'</td>';
+                if(element.hasOwnProperty("studentName")){
+                    table +='<td>'+element.answer+'</td>';
+                }else{
+                    table +='<td>'+"-"+'</td>';
+                }
+                
+                table +='</tr>';
+            }
+           
+        });
+        table +='</tbody>';
+        table +='</table>';
+
+        document.getElementById("feedback-table-container").innerHTML = table;
+    }
 }
 
 function populateDateWiseTable(){

@@ -45,9 +45,13 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("usernameSession", user.getUserName());
 			session.setAttribute("usertypeSession", user.getUserType());
 			
-			Cookie loginCookie = new Cookie("usernameCookie",username);
-			loginCookie.setMaxAge(30*60);//cookie set for 30 minutes
-			response.addCookie(loginCookie);
+			Cookie usernameCookie = new Cookie("usernameCookie",username);
+			usernameCookie.setMaxAge(30*60);//cookie set for 30 minutes
+			response.addCookie(usernameCookie);
+			
+			Cookie usertypeCookie = new Cookie("usertypeCookie",username);
+			usertypeCookie.setMaxAge(30*60);//cookie set for 30 minutes
+			response.addCookie(usertypeCookie);
 			
 			if(user.getUserType().equals("Admin")) {
 				System.out.println(user.getUserName());
